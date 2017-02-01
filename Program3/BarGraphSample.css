@@ -1,0 +1,23 @@
+body{
+    background-color: #FFFFFF;
+/*    #E6E6E6;*/
+}
+
+p{
+    text-indent: 40px;
+}
+
+//Add .axis path and .axis line commands as described in the book (1 point)
+
+.axis path,
+.axis line{
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+}
+
+.axis text{
+    font: Times;
+    font-size: 12px;
+    font-weight: bold;
+}
