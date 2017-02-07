@@ -84,7 +84,7 @@ d3.tsv("EPC_2000_2010_new.tsv", type, function(error, data) {
         .enter().append("g")
         .attr("class", "city");
 
-    city.append("path")
+    var path = city.append("path")
         .attr("class", "line")
         .attr("d", function(d) { return line(d.values); })
         .style("stroke", function(d) { return z(d.id); });
@@ -96,6 +96,17 @@ d3.tsv("EPC_2000_2010_new.tsv", type, function(error, data) {
         .attr("dy", "0.35em")
         .style("font", "10px sans-serif")
         .text(function(d) { return d.id; });
+
+	var totalLength = path.node().getTotalLength();
+	
+	path
+      .attr("stroke-dasharray", totalLength + " " + totalLength)
+      .attr("stroke-dashoffset", totalLength)
+      .transition()
+      .duration(5000)
+      .ease(d3.easeLinear)
+      .attr("stroke-dashoffset", 0);
+
 });
 
 function type(d, _, columns) {
@@ -103,4 +114,3 @@ function type(d, _, columns) {
     for (var i = 1, n = columns.length, c; i < n; ++i) d[c = columns[i]] = +d[c];
     return d;
 }
-
