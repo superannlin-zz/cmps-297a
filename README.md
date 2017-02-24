@@ -1,13 +1,30 @@
-# CMPS 297a
+# CMPS 297A
 
-These are CMPS 165 assignments completed as requirement of CMPS 297a, independent study under Professor Lodha.
+These are CMPS 165 assignments completed as a requirement of CMPS 297A.
 
-- [Assignment 1]
-- [Assignment 2]
-- [Assignment 3]
-- [Assignment 4]
-- [Assignment 5]
-- [Assignment 6]
+## Assignment 1
+
+Set up d3.
+
+## Assignment 2
+
+Introduction to HTML, CSS, JS, SVG.
+
+## Assignment 3
+
+Bar Chart.
+
+## Assignment 4
+
+Line Chart.
+
+## Assignment 5
+
+Scatter Plot.
+
+## Assignment 6
+
+GeoMapping.
 
 <!--
 # d3-book
