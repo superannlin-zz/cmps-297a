@@ -24,7 +24,7 @@ Scatter Plot.
 
 ## Assignment 6
 
-GeoMapping.
+GeoMapping. ([Viewable here](https://superannlin.github.io/chloropleth/))
 
 <!--
 # d3-book
