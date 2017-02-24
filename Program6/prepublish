@@ -49,5 +49,7 @@ geo2topo -n \
   | toposimplify -p 1 -f \
   | topomerge -k 'd.id.slice(0, 3)' counties=tracts \
   | topomerge --mesh -f 'a !== b' counties=counties \
+  | topomerge -k 'd.id.slice(0, 3)' borders=tracts \
+  | topomerge --mesh -f 'a == b' borders=borders \
   | topoquantize 1e5 \
   > il.json

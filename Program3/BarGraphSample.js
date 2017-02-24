@@ -82,15 +82,15 @@ d3.csv("GDP2016TrillionUSDollars.csv",function(error, data){
     
     // Label the data values(d.value) (3 points)
   
-    svg.selectAll('text')
-        .data(data)
-        .enter()
-        .append('text')
-        .text(function(d) {return d.value})
-        .attr("font-size", "14px")
-        .attr("x", function (d) { return xScale(d.key) + 5 })
-        .attr("y", function (d) { return yScale(d.value) + 15 })
-        .attr("fill", "white");
+//    svg.selectAll('text')
+//        .data(data)
+//        .enter()
+//        .append('text')
+//        .text(function(d) {return d.value})
+//        .attr("font-size", "14px")
+//        .attr("x", function (d) { return xScale(d.key) + 5 })
+//        .attr("y", function (d) { return yScale(d.value) + 15 })
+//        .attr("fill", "white");
     // Draw xAxis and position the label at -60 degrees as shown on the output (1 point)
     svg.append("g")
         .attr("class", "x axis")
@@ -102,7 +102,6 @@ d3.csv("GDP2016TrillionUSDollars.csv",function(error, data){
         .style("text-anchor", "end")
         .attr("font-size", "10px")
         .attr("transform", "rotate(-60)");
-        
     
     // Draw yAxis and postion the label (2 points)
     svg.append("g")
@@ -117,12 +116,6 @@ d3.csv("GDP2016TrillionUSDollars.csv",function(error, data){
         .attr("dx", "-5em")
         .attr("dy", "-3em")
         .text("Trillions of US Dollars ($)")
- 
-//        .selectAll("text")
-//        .attr("dx", "-.8em")
-//        .attr("dy", ".25em")
-//        .style("text-anchor", "end")
-//        .attr("font-size", "10px");
 
       
 });

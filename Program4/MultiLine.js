@@ -1,5 +1,5 @@
 var svg = d3.select("svg"),
-    margin = {top: 20, right: 80, bottom: 100, left: 275},
+    margin = {top: 20, right: 80, bottom: 100, left: 375},
     width = svg.attr("width") - margin.left - margin.right,
     height = svg.attr("height") - margin.top - margin.bottom,
     g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -12,8 +12,8 @@ var x = d3.scaleTime().range([0, width]),
 
 var line = d3.line()
     .curve(d3.curveBasis)
-    .x(function(d) { return x(d.date); })
-    .y(function(d) { return y(d.temperature); });
+    .x(function(d) { return x(d.year); })
+    .y(function(d) { return y(d.energy); });
 
 function gridXAxis(){
 	return d3.axisBottom(x)
@@ -30,16 +30,16 @@ d3.tsv("EPC_2000_2010_new.tsv", type, function(error, data) {
         return {
             id: id,
             values: data.map(function(d) {
-                return {date: d.date, temperature: d[id]};
+                return {year: d.year, energy: d[id]};
             })
         };
     });
 
-    x.domain(d3.extent(data, function(d) { return d.date; }));
+    x.domain(d3.extent(data, function(d) { return d.year; }));
 
     y.domain([
-        d3.min(cities, function(c) { return d3.min(c.values, function(d) { return d.temperature; }); }),
-        d3.max(cities, function(c) { return d3.max(c.values, function(d) { return d.temperature; }); })
+        d3.min(cities, function(c) { return d3.min(c.values, function(d) { return d.energy; }); }),
+        d3.max(cities, function(c) { return d3.max(c.values, function(d) { return d.energy; }); })
     ]);
 
     z.domain(cities.map(function(c) { return c.id; }));
@@ -91,7 +91,7 @@ d3.tsv("EPC_2000_2010_new.tsv", type, function(error, data) {
 
     city.append("text")
         .datum(function(d) { return {id: d.id, value: d.values[d.values.length - 1]}; })
-        .attr("transform", function(d) { return "translate(" + x(d.value.date) + "," + y(d.value.temperature) + ")"; })
+        .attr("transform", function(d) { return "translate(" + x(d.value.year) + "," + y(d.value.energy) + ")"; })
         .attr("x", 3)
         .attr("dy", "0.35em")
         .style("font", "10px sans-serif")
@@ -110,7 +110,7 @@ d3.tsv("EPC_2000_2010_new.tsv", type, function(error, data) {
 });
 
 function type(d, _, columns) {
-    d.date = parseTime(d.Year);
+    d.year = parseTime(d.Year);
     for (var i = 1, n = columns.length, c; i < n; ++i) d[c = columns[i]] = +d[c];
     return d;
 }
